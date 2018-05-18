@@ -1,0 +1,12 @@
+<html>
+    <body>
+        <h1>{{ titulo }}</h1>
+        {% for post in posts %}
+            <a href="/posts/detail/{{ post.id }}"> {{ post.titulo }}</a><br>
+            {{ post.contenido }}<br>
+            {{ post.timestamp }}<br>
+            {{ post.actualizado }}<br>
+            {{ post.id }}<br>
+        {% endfor %}
+    </body>
+</html>
