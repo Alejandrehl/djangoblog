@@ -10,3 +10,7 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo 
+
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('appname.views.viewname', args=[self.slug])
