@@ -14,10 +14,11 @@ def post_create(request):
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Tu post ha sido creado correctamente :D")
-        #return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {
-        "form" : form
+        "form" : form,
+        "titulo" : "Crear nuevo post"
     }
 
     return render(request, "post_form.html", context)
@@ -48,7 +49,7 @@ def post_update(request, id):
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Tu post ha sido actualizado correctamente :D")
-        #return HttpResponseRedirect(instance.get_absolute_url())
+        return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {
         "titulo" : post.titulo,
@@ -66,4 +67,4 @@ def post_list(request):
         "titulo" : "Artículos",
         "posts" : posts 
     }
-    return render(request, "index.html", context)
+    return render(request, "post_list.html", context)

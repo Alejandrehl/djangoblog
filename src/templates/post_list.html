@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for post in posts %}
+
+    <!-- {% url "post_detail" id=post.id %} -->
+
+    <a href="/posts/detail/{{ post.id }}"> {{ post.titulo }}</a><br>
+    {{ post.contenido }}<br>
+    {{ post.timestamp }}<br>
+    {{ post.actualizado }}<br>
+    {{ post.id }}<br>
+
+{% endfor %}
+
+{% endblock %}
