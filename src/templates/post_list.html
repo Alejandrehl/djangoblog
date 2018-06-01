@@ -3,13 +3,11 @@
 
 {% for post in posts %}
 
-    <!-- {% url "post_detail" id=post.id %} -->
-
+<div class="col-md-6">
     <a href="/posts/detail/{{ post.id }}"> {{ post.titulo }}</a><br>
     {{ post.contenido }}<br>
     {{ post.timestamp }}<br>
-    {{ post.actualizado }}<br>
-    {{ post.id }}<br>
+</div>
 
 {% endfor %}
 

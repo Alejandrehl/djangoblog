@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from posts.models import Post
 from .forms import PostForm
@@ -62,9 +63,15 @@ def post_update(request, id):
 
 # POSTS INDEX
 def post_list(request):
-    posts = Post.objects.all()
+    post_lists = Post.objects.all() #.order_by('-timestamp')
+
+    paginator = Paginator(post_lists, 3)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+
     context = {
         "titulo" : "Artículos",
         "posts" : posts 
     }
+
     return render(request, "post_list.html", context)
