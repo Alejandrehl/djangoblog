@@ -7,6 +7,7 @@ def upload_location(instance, filename):
 class Post(models.Model):
 
     titulo = models.CharField(max_length=150)
+    slug = models.SlugField(unique=True)
     imagen = models.ImageField(null=True,
                              blank=True,
                              height_field="height_field",
