@@ -9,7 +9,7 @@ from .forms import PostForm
 # Create your views here.
 # CREATE POST
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -44,7 +44,7 @@ def post_delete(request, id):
 # POST UPDATE
 def post_update(request, id):
     post = get_object_or_404(Post, id=id)
-    form = PostForm(request.POST or None, instance=post)
+    form = PostForm(request.POST or None, request.FILES or None, instance=post)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -65,7 +65,7 @@ def post_update(request, id):
 def post_list(request):
     post_lists = Post.objects.all() #.order_by('-timestamp')
 
-    paginator = Paginator(post_lists, 3)
+    paginator = Paginator(post_lists, 10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
