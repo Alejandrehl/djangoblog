@@ -3,7 +3,11 @@
 
 <div class="col-sm-6 col-sm-offset-3">
     <img src="{{ post.imagen.url }}"   class="img-thumbnail"/><br>
-    {{ post.contenido }}<br>      
+    {{ post.contenido }}<br>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+        <i class="fab fa-facebook"></i>
+    </a>      
+    <br><br>
 </div>
 
 {% endblock %}
